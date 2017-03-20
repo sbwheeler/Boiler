@@ -1,0 +1,41 @@
+{
+  "name": "boiler",
+  "version": "1.0.0",
+  "description": "Personal project boilerplate",
+  "main": "index.js",
+  "directories": {
+    "test": "mocha tests/*.test.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js",
+    "build": "webpack",
+    "build-watch": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbwheeler/Boiler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbwheeler/Boiler/issues"
+  },
+  "homepage": "https://github.com/sbwheeler/Boiler#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "express": "^4.15.2",
+    "react": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "react-router": "^4.0.0",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "webpack": "^2.2.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
+    "redux-logger": "^2.8.2"
+  }
+}
