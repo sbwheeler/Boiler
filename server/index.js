@@ -12,12 +12,16 @@ const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use('/', routes);
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500).end();
+});
+
+app.get('/', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.listen(port, () => {
