@@ -14,11 +14,7 @@ const Routes = () => {
   );
 };
 
-const mapStateToProps = (state) => { 
-  return {
-    firstState: state.firstState,
-  };
-};
+const mapStateToProps = null;
 const mapDispatchToProps = null;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routes);
