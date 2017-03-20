@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
-
-const db = new Sequelize('postgres://localhost5432/boiler', {
+const DB_NAME = 'boiler';
+const db = new Sequelize(`postgres://localhost5432/${DB_NAME}`, {
   logging: false,
 });
 

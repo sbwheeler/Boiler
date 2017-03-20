@@ -4,7 +4,7 @@ module.exports = {
   entry: './browser/index.jsx', // the starting point for our program
   output: {
     path: path.join(__dirname, '/public'), // absolute path for the directory where we want the output to be placed
-    filename: './public/bundle.js',
+    filename: 'bundle.js',
   },
   context: __dirname,
   devtool: 'source-map',
