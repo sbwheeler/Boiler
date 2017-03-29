@@ -26,6 +26,14 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(chalk.blue(`server running on ${PORT}`));
-});
+// pull in our models
+require('./db/models')
+
+db.sync()
+  .then(() => {
+    console.log(chalk.blue('database is synced!'));
+    app.listen(PORT, (err) => {
+      if (err) throw err;
+      console.log(chalk.green(`server running on ${PORT}`));
+    });
+  });

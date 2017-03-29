@@ -8,9 +8,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/index.js",
+    "start": "webpack -w & nodemon server/index.js",
     "build": "webpack",
-    "build-watch": "webpack -w"
+    "db-init": "pg-init boiler",
+    "postinstall": "npm run db-init"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,8 @@
     "babel-preset-stage-2": "^6.22.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "fs-misc": "^2.0.0",
+    "pg": "^6.1.5",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
