@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const routes = require('./routes');
 const morgan = require('morgan');
+const chalk = require('chalk');
+const db = require('./db');
 
 const isProduction = process.env.NODE_ENV === 'production';
-const port = isProduction ? process.env.PORT : 3000;
+const PORT = isProduction ? process.env.PORT : 3000;
 
 const app = express();
 
@@ -24,6 +26,6 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.listen(port, () => {
-  console.log(`server running on ${port}`);
+app.listen(PORT, () => {
+  console.log(chalk.blue(`server running on ${PORT}`));
 });
