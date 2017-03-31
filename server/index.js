@@ -22,12 +22,12 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).end();
 });
 
-app.get('/', (req, res, next) => {
+app.get('/*', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 // pull in our models
-require('./db/models')
+require('./db/models');
 
 db.sync()
   .then(() => {
