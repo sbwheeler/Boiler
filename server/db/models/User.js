@@ -4,6 +4,13 @@ const _ = require('lodash');
 
 const db = require('../');
 
+const setSaltAndPassword = (user) => {
+  if (user.changed('password')) {
+    user.salt = user.Model.generateSalt();
+    user.password = user.Model.encryptPassword(user.password, user.salt);
+  }
+};
+
 const User = db.define('user', {
   name: {
     type: Sequelize.STRING,
@@ -36,9 +43,9 @@ const User = db.define('user', {
   },
   classMethods: {
     generateSalt: function () {
-      return crypto.randomBytes(16).toString('base64'); 
+      return crypto.randomBytes(16).toString('base64');
     },
-    encryptPassword: function (plaintext, salt) {
+    encryptPassword: function (plainText, salt) {
       const hash = crypto.createHash('sha1');
       hash.update(plainText);
       hash.update(salt);
@@ -51,9 +58,4 @@ const User = db.define('user', {
   },
 });
 
-const setSaltAndPassword = (user) => {
-  if (user.changed('password')) {
-    user.salt = user.Model.generateSalt();
-    user.password = user.Model.encryptPassword(user.password, user.salt);
-  }
-}
+module.exports = User;
