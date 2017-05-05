@@ -1,15 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const routes = require('./routes');
 const morgan = require('morgan');
 const chalk = require('chalk');
+const session = require('express-session');
+
+const routes = require('./routes');
 const db = require('./db');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const PORT = isProduction ? process.env.PORT : 3000;
 
 const app = express();
+
+// allowing us to use local or heroku env variables for security during deployment
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'samboiler',
+  resave: false,
+  saveUninitialized: false,
+}));
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
