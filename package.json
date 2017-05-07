@@ -11,7 +11,8 @@
     "start": "webpack -w & nodemon server/index.js",
     "build": "webpack",
     "db-init": "pg-init boiler",
-    "postinstall": "npm run db-init"
+    "postinstall": "npm run db-init",
+    "seed": "node server/db/seed.js"
   },
   "repository": {
     "type": "git",
