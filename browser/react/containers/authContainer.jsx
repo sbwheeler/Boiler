@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
 import AuthComponent from '../components/authComponent';
-import { login, signup } from '../../redux/action-creators/authActionCreators';
+import { login, signup, logout } from '../../redux/action-creators/authActionCreators';
 
 const mapStateToProps = state => ({ user: state.auth });
 const mapDispatchToProps = dispatch => ({
@@ -12,6 +12,10 @@ const mapDispatchToProps = dispatch => ({
   },
   signup: (credentials) => {
     dispatch(signup(credentials));
+    browserHistory.push('/');
+  },
+  logout: () => {
+    dispatch(logout());
     browserHistory.push('/');
   },
 });

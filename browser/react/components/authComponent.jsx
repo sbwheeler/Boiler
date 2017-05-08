@@ -17,10 +17,8 @@ export default class AuthComponent extends React.Component {
     this.props.login(credentials);
   }
 
-  onLogout(event) {
-    event.preventDefault();
-
-
+  onLogoutClick() {
+    this.props.logout();
   }
 
 	render() {
@@ -28,7 +26,7 @@ export default class AuthComponent extends React.Component {
       <div>
       { this.props.user ?
         (
-          <button onClick={() => onLogout}>Log out</button>
+          <button onClick={() => this.onLogoutClick()}>Log out</button>
         ) :
         (
 				<div>
