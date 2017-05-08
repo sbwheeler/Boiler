@@ -22,9 +22,15 @@ router.post('/login', (req, res, next) => {
 
       // correct password, use passport's login method attached to the req object
       else {
-        req.login((foundUser, err) => {
+        req.login(foundUser, (err) => {
           if (err) next(err);
-          else res.json(foundUser);
+
+          // send back the relevant user data
+          else res.json({
+            name: foundUser.name,
+            email: foundUser.email,
+            id: foundUser.id,
+          });
         });
       }
     });

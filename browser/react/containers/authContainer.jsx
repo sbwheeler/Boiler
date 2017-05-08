@@ -1,17 +1,20 @@
-const mapStateLogin = () => ({ message: 'Log in' })
-const mapDispatchLogin = dispatch => ({ 
-	login: credentials => {
-		dispatch(login(credentials));
-		browserHistory.push('/');
-	}
-})
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
-const mapStateSignup = () => ({ message: 'Sign up' })
-const mapDispatchSignup = dispatch => ({ 
-	signup: credentials => {
-		dispatch(signup(credentials));
-		browserHistory.push('/');
-	}
-})
+import AuthComponent from '../components/authComponent';
+import { login, signup } from '../../redux/action-creators/authActionCreators';
 
-e
+const mapStateToProps = state => ({ user: state.auth });
+const mapDispatchToProps = dispatch => ({
+  login: (credentials) => {
+    dispatch(login(credentials));
+    browserHistory.push('/');
+  },
+  signup: (credentials) => {
+    dispatch(signup(credentials));
+    browserHistory.push('/');
+  },
+});
+
+const AuthContainer = connect(mapStateToProps, mapDispatchToProps)(AuthComponent);
+export default AuthContainer;
